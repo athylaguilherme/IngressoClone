@@ -11,6 +11,9 @@ namespace IngressoMVC.Models
         public DateTime DataCadastro { get; set; }
         public DateTime DataAlteração { get; set; }
         public string Nome { get; set; }
-       
+
+        // Relacionamento com tabela auxilia Filme
+        public List<FilmeCategoria> FilmeCategorias { get; set; }
+
     }
 }

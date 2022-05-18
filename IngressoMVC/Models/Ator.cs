@@ -8,6 +8,8 @@ namespace IngressoMVC.Models
 {
     public class Ator : Artista
     {
-       
+        // Relacionamento com a tabela auxiliar
+        public List<AtorFilme> AtorFilmes { get; set; }
+
     }
 }
