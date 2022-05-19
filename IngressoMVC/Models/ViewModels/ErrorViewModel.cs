@@ -1,6 +1,6 @@
 using System;
 
-namespace IngressoMVC.Models
+namespace IngressoMVC.Models.ViewModels
 {
     public class ErrorViewModel
     {
