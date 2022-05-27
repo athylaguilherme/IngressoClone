@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Ator>
+
+<div class="container">
+
+    <div class="row">
+
+        <h1 class="text-center col-md-12">
+            Atores - <a href="#" class="btn btn-dark">Cadastrar</a>
+        </h1>
+
+        <div class="col-md-10 offset-md-1">
+
+
+
+            <div class="input-group my-2">
+                <input type="text" name="nome" id="" placeholder="Buscar..." class="form-control " aria-label="Dollar amount (with dot and two decimal places)">
+                <span class="input-group-text ml-1"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ações</th>
+                        <th>Foto de Perfil</th>
+                        <th>Nome</th>
+                        <th>Biografia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ator in Model)
+                    {
+
+                        <tr>
+                            <td class="align-middle">
+                                <div class="d-flex flex-column">
+                                    <a href="#" class="btn btn-success mt-1"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+                                    <a href="#" class="btn btn-primary mt-1"><i class="fa-solid fa-eye"></i>Ver</a>
+                                    <a href="#" class="btn btn-danger mt-1"><i class="fa-solid fa-trash"></i>Excluir</a>
+
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <img src="@ator.FotoPerfilURL" style="max-width:120px" alt="Foto do @ator.NomeCompleto">
+                            </td>
+                            <td class="align-middle">@ator.NomeCompleto</td>
+                            <td class="align-middle">@ator.Bio</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
