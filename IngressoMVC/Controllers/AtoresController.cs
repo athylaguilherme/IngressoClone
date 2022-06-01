@@ -17,12 +17,13 @@ namespace IngressoMVC.Controllers
             _context = context;
         }
 
-        
+        // Retornando a lista Atores
         public ActionResult<Ator> Index()
         { 
              return View(_context.Atores);
         }
 
+        // Retornando ator especifico
         public IActionResult Detalhes(int id)
         {
             var result = _context.Atores.Find(id);
@@ -30,9 +31,25 @@ namespace IngressoMVC.Controllers
             return View(result);
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+
+        public IActionResult Editar(int id)
+        {
+            // Buscar ator no banco 
+            // passar ator na view
+            return View();
+        }
+
+         public IActionResult Deletar(int id)
+         {
+           // Buscar ator no banco 
+            // passar ator na view
+             
+                return View();       
+         }
     }
 }

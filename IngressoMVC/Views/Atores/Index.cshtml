@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<Ator>
 
+@{
+ ViewData["Title"] = "Índice Atores";
+}
+
 <div class="container">
 
     <div class="row">
 
         <h1 class="text-center col-md-12">
-            Atores - <a href="#" class="btn btn-dark">Cadastrar</a>
+            Atores - <a href="https://localhost:5001/atores/criar" class="btn btn-dark">Cadastrar</a>
         </h1>
 
         <div class="col-md-10 offset-md-1">
@@ -21,9 +25,9 @@
                 <thead>
                     <tr>
                         <th>Ações</th>
-                        <th>Foto de Perfil</th>
-                        <th>Nome</th>
-                        <th>Biografia</th>
+                        <th>@Html.DisplayNameFor(Model => Model.FotoPerfilURL)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.NomeCompleto)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.Bio)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,9 +37,9 @@
                         <tr>
                             <td class="align-middle">
                                 <div class="d-flex flex-column">
-                                    <a href="#" class="btn btn-success mt-1"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
-                                    <a href="#" class="btn btn-primary mt-1"><i class="fa-solid fa-eye"></i>Ver</a>
-                                    <a href="#" class="btn btn-danger mt-1"><i class="fa-solid fa-trash"></i>Excluir</a>
+                                    <a asp-action="Editar" asp-route-id="@ator.Id" class="btn btn-success mt-1"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+                                    <a asp-action="Detalhes" asp-route-id="@ator.Id" class="btn btn-primary mt-1"><i class="fa-solid fa-eye"></i>Ver</a>
+                                    <a asp-action="Deletar" asp-route-id="@ator.Id" class="btn btn-danger mt-1"><i class="fa-solid fa-trash"></i>Excluir</a>
 
                                 </div>
                             </td>
