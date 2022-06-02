@@ -1,5 +1,6 @@
 using IngressoMVC.Data;
 using IngressoMVC.Models;
+using IngressoMVC.Models.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -27,6 +28,15 @@ public class ProdutoresController : Controller
         public IActionResult Cadastrar()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(PostProdutorDTO produtorDTO)
+        {
+            Produtor produtor = new Produtor(produtorDTO.NomeCompleto, produtorDTO.Bio, produtorDTO.FotoPerfilURL);
+            _context.Produtores.Add(produtor);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
 
