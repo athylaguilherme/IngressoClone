@@ -1,5 +1,6 @@
 ﻿using IngressoMVC.Data;
 using IngressoMVC.Models;
+using IngressoMVC.Models.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,9 @@ namespace IngressoMVC.Controllers
             return View(_context.Cinemas);
         }
 
+
+        
+
          public IActionResult Detalhes(int id)
         {
             var result = _context.Cinemas.Find(id);
@@ -35,6 +39,21 @@ namespace IngressoMVC.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Cadastrar(PostCinemaDTO cinemaDTO)
+        {
+            Cinema cinema = new Cinema(cinemaDTO.Nome, cinemaDTO.Descricao, cinemaDTO.LogoURL);
+
+            //Adicionando mudança no banco de dados
+            _context.Cinemas.Add(cinema);
+
+            //Salvando Mudanças no banco
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        } 
+        
 
 
         public IActionResult Editar(int id)

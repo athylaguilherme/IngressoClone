@@ -1,4 +1,6 @@
 ﻿using IngressoMVC.Data;
+using IngressoMVC.Models;
+using IngressoMVC.Models.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,7 @@ namespace IngressoMVC.Controllers
         
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Categorias);
         }
 
 
@@ -29,6 +31,18 @@ namespace IngressoMVC.Controllers
             return View();
         }
 
+         [HttpPost]
+        public IActionResult Cadastrar(PostCategoriaDTO CategoriaDto)
+        {
+            Categoria categoria = new Categoria (CategoriaDto.Nome);
+            // Validar os daodos 
+            
+            // Gravar esse ator no banco de dados 
+            _context.Categorias.Add(categoria);
+            // Salvar Mudanças
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
 
         public IActionResult Editar(int id)
         {
