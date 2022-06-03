@@ -1,4 +1,5 @@
-﻿using IngressoMVC.Data;
+﻿using System.Linq;
+using IngressoMVC.Data;
 using IngressoMVC.Models;
 using IngressoMVC.Models.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
@@ -39,8 +40,15 @@ namespace IngressoMVC.Controllers
         [HttpPost]
         public IActionResult Criar(PostAtorDto atorDto)
         {
+             // Validar os dados
+             if(!ModelState.IsValid || ! atorDto.FotoPerfilURL.EndsWith(".jpg"))
+             {
+                 return View(atorDto);
+             } 
+
+
             Ator ator = new Ator(atorDto.NomeCompleto, atorDto.Bio, atorDto.FotoPerfilURL);
-            // Validar os daodos 
+           
             
             // Gravar esse ator no banco de dados 
             _context.Atores.Add(ator);
@@ -54,6 +62,7 @@ namespace IngressoMVC.Controllers
         public IActionResult Editar(int id)
         {
             // Buscar ator no banco 
+            
             // passar ator na view
             return View();
         }
@@ -61,9 +70,22 @@ namespace IngressoMVC.Controllers
          public IActionResult Deletar(int id)
          {
            // Buscar ator no banco 
+           var result = _context.Atores.FirstOrDefault(a => a.Id == id);
+           if(result == null) return View();
             // passar ator na view
+                return View(result);       
+         }
+
+         [HttpDelete]
+
+         public IActionResult ConfirmarDeletar(int id)
+         {
+             var result = _context.Atores.FirstOrDefault(a => a.Id == id);
              
-                return View();       
+             _context.Atores.Remove(result);
+             _context.SaveChanges();
+
+             return RedirectToAction(nameof(Index));
          }
     }
 }

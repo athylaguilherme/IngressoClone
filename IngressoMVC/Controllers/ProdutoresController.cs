@@ -33,6 +33,13 @@ public class ProdutoresController : Controller
         [HttpPost]
         public IActionResult Cadastrar(PostProdutorDTO produtorDTO)
         {
+            // Validar dados
+              if(!ModelState.IsValid)
+             {
+                 return View(produtorDTO);
+             } 
+
+
             Produtor produtor = new Produtor(produtorDTO.NomeCompleto, produtorDTO.Bio, produtorDTO.FotoPerfilURL);
             _context.Produtores.Add(produtor);
             _context.SaveChanges();

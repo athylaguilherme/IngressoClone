@@ -43,6 +43,9 @@ namespace IngressoMVC.Controllers
         [HttpPost]
         public ActionResult Cadastrar(PostCinemaDTO cinemaDTO)
         {
+
+            if(!ModelState.IsValid) return View(cinemaDTO);
+
             Cinema cinema = new Cinema(cinemaDTO.Nome, cinemaDTO.Descricao, cinemaDTO.LogoURL);
 
             //Adicionando mudança no banco de dados

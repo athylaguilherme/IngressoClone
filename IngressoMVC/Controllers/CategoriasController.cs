@@ -34,6 +34,8 @@ namespace IngressoMVC.Controllers
          [HttpPost]
         public IActionResult Cadastrar(PostCategoriaDTO CategoriaDto)
         {
+            if(!ModelState.IsValid) return View(CategoriaDto);
+
             Categoria categoria = new Categoria (CategoriaDto.Nome);
             // Validar os daodos 
             
@@ -44,19 +46,29 @@ namespace IngressoMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Editar(int id)
+        public IActionResult Editar(string nome)
         {
             // Buscar Categoria no banco 
             // passar Categoria na view
             return View();
         }
 
-         public IActionResult Deletar(int id)
+
+          public IActionResult Deletar()
+        {
+            return View();
+        }        
+
+        [HttpDelete]
+         public IActionResult ConfirmarDeletar(PostCategoriaDTO CategoriaDto)
          {
+            Categoria categoria = new Categoria (CategoriaDto.Nome);
            // Buscar Categoria no banco 
             // passar Categoria na view
+            _context.Categorias.Remove(categoria);
+            _context.SaveChanges();
              
-                return View();       
+                return RedirectToAction(nameof(Index));       
          }
     }
 }
