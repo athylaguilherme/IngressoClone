@@ -1,3 +1,4 @@
+using System.Linq;
 using IngressoMVC.Data;
 using IngressoMVC.Models;
 using IngressoMVC.Models.ViewModels.Request;
@@ -49,16 +50,56 @@ public class ProdutoresController : Controller
 
         public IActionResult Editar(int id)
         {
-            // Buscar produtores no banco 
+            // Validando se o id não Nulo
+            if(id == null){
+                return View();
+            }
+            // Buscar produtor no banco
+            var result = _context.Produtores.FirstOrDefault(p => p.Id == id);
+            // Verificando se o produtor buscado no banco de dados é valido
+            if(result == null){
+                return View();
+            } 
             // passar produtores na view
-            return View();
+            return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(int id, PostProdutorDTO produtorDto)
+        {
+            //Buscando o produtor no banco de dados 
+            var result = _context.Produtores.FirstOrDefault(p => p.Id == id);
+            // Atualizando os dados com o metodo da model
+            result.AtualizarDados(produtorDto.NomeCompleto, produtorDto.Bio, produtorDto.FotoPerfilURL);
+            // Atualizando no banco de dados as mudanças 
+            _context.Update(result);
+            //Salvando as Mundaças no banco de dados 
+            _context.SaveChanges();
+            // Redirecionando para Index do Produtor
+            return RedirectToAction(nameof(Index)); 
         }
 
          public IActionResult Deletar(int id)
          {
            // Buscar produtores no banco 
+           var result = _context.Produtores.FirstOrDefault(p => p.Id == id);
+           if(result == null) return View();
             // passar produtores na view
-             
-                return View();       
+                return View(result);       
+         }
+
+         [HttpPost]
+
+         public IActionResult ConfirmarDeletar(int id)
+         {
+            //Buscando Produtor no banco de dados e guardando na variavel
+            var result = _context.Produtores.FirstOrDefault(p => p.Id == id);
+            // Removendo Produtor no banco de daods
+            _context.Produtores.Remove(result);
+            // Salvando no Banco as Mundaças
+            _context.SaveChanges();
+            // Redirecionando para Pagina Index
+            return RedirectToAction(nameof(Index));
+
          }
     }

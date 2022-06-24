@@ -59,13 +59,37 @@ namespace IngressoMVC.Controllers
 
 
 
-        public IActionResult Editar(int id)
+        
+        public IActionResult Editar(int? id)
         {
-            // Buscar ator no banco 
-            
+            if(id == null){
+                return View();
+            }
+            // Buscar ator no banco
+            var result = _context.Atores.FirstOrDefault(a => a.Id == id); 
+            if(result == null) {
+                return View();
+            }
             // passar ator na view
-            return View();
+            return View(result);
         }
+
+        [HttpPost]
+        public IActionResult Editar(int id, PostAtorDto atorDto)
+        {
+            // Buscar o ator no banco de dados
+            var result = _context.Atores.FirstOrDefault(a => a.Id == id);
+            // Atualizar os dados do ator 
+            result.AtualizarDados(atorDto.NomeCompleto, atorDto.Bio, atorDto.FotoPerfilURL);
+
+            // Atualizar isso no banco de dados
+            _context.Atores.Update(result);
+            // Salvar as Mudanças
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
          public IActionResult Deletar(int id)
          {

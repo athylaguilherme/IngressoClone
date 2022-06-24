@@ -30,5 +30,14 @@ namespace IngressoMVC.Models
 
        [Display(Name = "Foto")]
        public string FotoPerfilURL { get; private set; }
+
+    public void AtualizarDados(string nomeCompleto, string bio, string fotoPerfilURL)
+    {
+        NomeCompleto = nomeCompleto;
+        Bio = bio;
+        FotoPerfilURL = fotoPerfilURL;
     }
+    }
+
+  
 }
