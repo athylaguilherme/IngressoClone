@@ -77,6 +77,10 @@ namespace IngressoMVC.Controllers
         [HttpPost]
         public IActionResult Editar(int id, PostAtorDto atorDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(atorDto);
+            }
             // Buscar o ator no banco de dados
             var result = _context.Atores.FirstOrDefault(a => a.Id == id);
             // Atualizar os dados do ator 

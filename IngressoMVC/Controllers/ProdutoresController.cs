@@ -67,6 +67,10 @@ public class ProdutoresController : Controller
         [HttpPost]
         public IActionResult Editar(int id, PostProdutorDTO produtorDto)
         {
+             if (!ModelState.IsValid)
+            {
+                return View(produtorDto);
+            }
             //Buscando o produtor no banco de dados 
             var result = _context.Produtores.FirstOrDefault(p => p.Id == id);
             // Atualizando os dados com o metodo da model
