@@ -2,8 +2,9 @@
 using IngressoMVC.Data;
 using IngressoMVC.Models;
 using IngressoMVC.Models.ViewModels.Request;
+using IngressoMVC.Models.ViewModels.ResponseDTO;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace IngressoMVC.Controllers
 {
@@ -25,10 +26,27 @@ namespace IngressoMVC.Controllers
         // Retornando ator especifico
         public IActionResult Detalhes(int id)
         {
-            var result = _context.Atores.Find(id);
 
-            return View(result);
+            var resultado = _context.Atores.Include(af => af.AtorFilmes)
+                .ThenInclude(f => f.Filme)
+                .FirstOrDefault(ator => ator.Id == id);
+           
+
+            GetAtoresDTO atorDTO = new GetAtoresDTO()
+            {
+                NomeCompleto = resultado.NomeCompleto,
+                Bio = resultado.Bio,
+                FotoPerfilURL = resultado.FotoPerfilURL,
+                FotoURLFilmes = resultado.AtorFilmes.Select(af => af.Filme.ImageURL).ToList(),
+                NomeFilmes = resultado.AtorFilmes.Select(af => af.Filme.Titulo).ToList()
+
+
+            };
+
+            return View(resultado);
         }
+
+       
 
         
         public IActionResult Criar()

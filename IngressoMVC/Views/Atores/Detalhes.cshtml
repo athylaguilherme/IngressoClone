@@ -1,35 +1,36 @@
-﻿@model Ator
+﻿@model IngressoMVC.Models.ViewModels.ResponseDTO.GetProdutoresDTO
 
-        <h1 class="text-center">@Model.NomeCompleto</h1>
+        <h1 class="text-center text-light">@Model.NomeCompleto</h1>
     <div class="row">
         <div class="col-md-2">
             <img  class="img-thumbnail" src="@Model.FotoPerfilURL" alt="Foto do @Model.NomeCompleto" /> 
         </div>
         <div class="col-md-10">
-            <p>@Model.Bio</p>
-            <p>
-                Silvio Santos Ipsum Mah ooooee vem pra cá. Vem pra cá. Ma você está certo dissoam? Ma! Ao adquirir o carnê do Baú, você estará concorrendo a um prêmio de cem mil reaisam. Mah você mora com o papai ou com a mamãem? Estamos em ritmo de festamm. Eu não queria perguntar isso publicamente, ma vou perguntar. Carla, você tem o ensino fundamentauam? Boca sujuam... sem vergonhuamm.
-
-                Ma você, topa ou não topamm. É com você Lombardiam. Mah é a porta da esperançaam. Ma vai pra lá. Eu não queria perguntar isso publicamente, ma vou perguntar. Carla, você tem o ensino fundamentauam? Ma você está certo dissoam?
-            </p>
+            <p class="text-light">@Model.Bio</p>
         </div>
 
 
     </div>
-
+    if(model.FotoURLFilmes.Count > 0){
    @* Carrossel *@
     <div class="row">
         <div id="carouselExampleFade" class="carousel slide col-md-4 offset-md-4" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dODKvv9o9BOemWavnulutJBHM80.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/88sCL8OQMoieKpHClqRCCbcgH6w.jpg" class="d-block  w-100" alt="...">
-                </div>
+          
+                @foreach (var Filme in Model.FotoFilmelURL)
+                {
+                    if (Filme == Model.FotoFilmelURL.First())
+                    {
+                        <div class="carousel-item active">
+                        <img src="@Filme" class="d-block w-100" alt="...">
+                        </div>
+                    }
+
+                     else{
+                    <div class="carousel-item">
+                        <img src="@Filme" class="d-block w-100" alt="...">
+                    </div>
+                    } 
+                }
             </div>
             <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,3 +43,7 @@
         </div>        
     </div>
    @* Fim Carrossel*@
+}
+else{
+    <h1 class="text-danger">Não Há Filmes para @Model.NomeCompleto</h1>
+}

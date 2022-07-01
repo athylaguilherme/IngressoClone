@@ -46,25 +46,57 @@ namespace IngressoMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Editar(string nome)
+        public IActionResult Editar(int? id)
         {
+            if(id == null ){
+                return View();
+            }
             // Buscar Categoria no banco 
+          var result =  _context.Categorias.FirstOrDefault(c => c.Id == id);
+          if(result == null){
+                return View();
+          }
             // passar Categoria na view
-            return View();
+            return View(result);
         }
 
 
-          public IActionResult Deletar()
+        [HttpPost]
+        public IActionResult Editar(int id, PostCategoriaDTO categoriaDto)
         {
-            return View();
+            var categoria = _context.Categorias.FirstOrDefault(c => c.Id == id);
+            categoria.AtualizaCategoria(categoriaDto.Nome);
+            _context.Categorias.Update(categoria);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+          public IActionResult Deletar(int id)
+        {
+             if(id == null){
+                return View();
+            }
+            // Buscar Categoria no banco 
+            var categoria = _context.Categorias.FirstOrDefault(c => c.Id == id);
+            if(categoria == null){
+                return View();
+            }
+            return View(categoria);
         }        
 
-        [HttpDelete]
-         public IActionResult ConfirmarDeletar(PostCategoriaDTO CategoriaDto)
+        [HttpPost]
+         public IActionResult ConfirmarDeletar(int? id)
          {
-            Categoria categoria = new Categoria (CategoriaDto.Nome);
-           // Buscar Categoria no banco 
-            // passar Categoria na view
+            if(id == null){
+                return View();
+            }
+
+            var categoria = _context.Categorias.FirstOrDefault(c => c.Id == id);
+
+            if(categoria == null){
+                return View();
+            }
+
             _context.Categorias.Remove(categoria);
             _context.SaveChanges();
              

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div style="background-color:#000000">
     <header>
        
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#8B0000;">
@@ -23,18 +24,18 @@
                     <ul class="navbar-nav flex-grow-1">
 
                         <li class="nav-item">
-                            <a class="nav-link text-light fw-bolder"  asp-controller="Atores" asp-action="Index">Atores</a>
+                            <a class="nav-link text-light"  asp-controller="Atores" asp-action="Index">Atores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fw-bolder"  asp-controller="Cinemas" asp-action="Index">Cinemas</a>
+                            <a class="nav-link text-light"  asp-controller="Cinemas" asp-action="Index">Cinemas</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-light fw-bolder"  asp-controller="Produtores" asp-action="Index">Produtores</a>
+                            <a class="nav-link text-light"  asp-controller="Produtores" asp-action="Index">Produtores</a>
                         </li>
 
                          <li class="nav-item">
-                            <a class="nav-link text-light fw-bolder"  asp-controller="Categorias" asp-action="Index">Categorias</a>
+                            <a class="nav-link text-light"  asp-controller="Categorias" asp-action="Index">Categorias</a>
                         </li>
 
                     </ul>
@@ -42,10 +43,12 @@
             </div>
         </nav>
     </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+    </div>
     </div>
 
     <footer class="border-top footer text-muted">

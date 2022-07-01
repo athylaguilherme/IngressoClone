@@ -8,7 +8,7 @@
 
     <div class="row">
 
-        <h1 class="text-center col-md-12">
+        <h1 class="text-center col-md-12 text-light">
             Atores - <a asp-action="Criar" class="btn btn-dark">Cadastrar</a>
         </h1>
 
@@ -24,10 +24,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Ações</th>
-                        <th>@Html.DisplayNameFor(Model => Model.FotoPerfilURL)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.NomeCompleto)</th>
-                        <th>@Html.DisplayNameFor(Model => Model.Bio)</th>
+                        <th class="text-light">Ações</th>
+                        <th class="text-light">@Html.DisplayNameFor(Model => Model.FotoPerfilURL)</th>
+                        <th class="text-light">@Html.DisplayNameFor(Model => Model.NomeCompleto)</th>
+                        <th class="text-light">@Html.DisplayNameFor(Model => Model.Bio)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,8 +46,8 @@
                             <td class="align-middle">
                                 <img src="@ator.FotoPerfilURL" style="max-width:120px" alt="Foto do @ator.NomeCompleto">
                             </td>
-                            <td class="align-middle">@ator.NomeCompleto</td>
-                            <td class="align-middle">@ator.Bio</td>
+                            <td class="align-middle text-light">@ator.NomeCompleto</td>
+                            <td class="align-middle text-light">@ator.Bio</td>
                         </tr>
                     }
                 </tbody>

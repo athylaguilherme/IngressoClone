@@ -18,8 +18,14 @@ namespace IngressoMVC.Models
         public DateTime DataAlteração { get; set; }
         public string Nome { get; private set; }
 
-        // Relacionamento com tabela auxilia Filme
+        
         public List<FilmeCategoria> FilmeCategorias { get; set; }
+
+        public void AtualizaCategoria(string novoNome)
+        {
+            Nome = novoNome;
+            DataAlteração = DateTime.Now;
+        }
 
     }
 }

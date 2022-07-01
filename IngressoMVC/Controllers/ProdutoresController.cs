@@ -2,6 +2,7 @@ using System.Linq;
 using IngressoMVC.Data;
 using IngressoMVC.Models;
 using IngressoMVC.Models.ViewModels.Request;
+using IngressoMVC.Models.ViewModels.ResponseDTO;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -21,10 +22,21 @@ public class ProdutoresController : Controller
 
          public IActionResult Detalhes(int id)
         {
-            var result = _context.Produtores.Find(id);
+            var Produtor = _context.Produtores.Find(id);
+            
+            var result = _context.Produtores.Where(pd => pd.Id == id)
+            .Select(pd => new GetProdutoresDTO()
+            {
+                Bio = pd.Bio,
+                FotoPerfilURL = pd.FotoPerfilURL,
+                NomeCompleto = pd.NomeCompleto, 
+                NomeFilmes = pd.Filmes.Select(fm => fm.Titulo).ToList(),
+                FotoFilmelURL = pd.Filmes.Select(fm => fm.ImageURL).ToList()
+            }).FirstOrDefault();
 
             return View(result);
         }
+
 
         public IActionResult Cadastrar()
         {
@@ -48,7 +60,7 @@ public class ProdutoresController : Controller
         }
 
 
-        public IActionResult Editar(int id)
+        public IActionResult Editar(int? id)
         {
             // Validando se o id não Nulo
             if(id == null){
