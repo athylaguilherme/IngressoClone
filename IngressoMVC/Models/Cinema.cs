@@ -24,5 +24,13 @@ namespace IngressoMVC.Models
         public string LogoURL { get; private set; }
 
         public List<Filme> Filmes { get; set; }
+
+        public void AtualizarDados(string nome, string descricao, string logoURL)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            LogoURL = logoURL;
+            DataAlteração = DateTime.Now;
+        }
     }
 }
