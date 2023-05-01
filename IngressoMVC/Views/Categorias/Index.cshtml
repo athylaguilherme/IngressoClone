@@ -1,0 +1,54 @@
+@model IEnumerable<Categoria>
+
+@{
+ ViewData["Title"] = "Categoria";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <h1 class="text-center col-md-12">
+            Atores - <a asp-action="Cadastrar" class="btn btn-dark">Cadastrar</a>
+        </h1>
+
+        <div class="col-md-10 offset-md-1">
+
+
+
+            <div class="input-group my-2">
+                <input type="text" name="nome" id="" placeholder="Buscar..." class="form-control " aria-label="Dollar amount (with dot and two decimal places)">
+                <span class="input-group-text ml-1"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ações</th>
+                        <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var categoria in Model)
+                    {
+
+                        <tr>
+                            <td class="align-middle">
+                                <div class="d-flex flex-column">
+                                    <a asp-action="Editar" asp-route-id="@categoria.Id" class="btn btn-success mt-1"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
+                                    <a asp-action="Detalhes" asp-route-id="@categoria.Id" class="btn btn-primary mt-1"><i class="fa-solid fa-eye"></i>Ver</a>
+                                    <a asp-action="Deletar" asp-route-id="@categoria.Id" class="btn btn-danger mt-1"><i class="fa-solid fa-trash"></i>Excluir</a>
+
+                                </div>
+                            </td>
+                           
+                            <td class="align-middle">@categoria.Nome</td>
+                
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
