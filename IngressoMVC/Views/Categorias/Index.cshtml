@@ -8,8 +8,8 @@
 
     <div class="row">
 
-        <h1 class="text-center col-md-12">
-            Atores - <a asp-action="Cadastrar" class="btn btn-dark">Cadastrar</a>
+        <h1 class="text-center col-md-12 text-light">
+            Atores - <a asp-action="Cadastrar" class="btn btn-outline-info">Cadastrar</a>
         </h1>
 
         <div class="col-md-10 offset-md-1">
@@ -24,8 +24,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Ações</th>
-                        <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+                        <th class="text-light">Ações</th>
+                        <th class="text-light">@Html.DisplayNameFor(Model => Model.Nome)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,14 +35,14 @@
                         <tr>
                             <td class="align-middle">
                                 <div class="d-flex flex-column">
-                                    <a asp-action="Editar" asp-route-id="@categoria.Id" class="btn btn-success mt-1"><i class="fa-solid fa-pen-to-square"></i>Editar</a>
-                                    <a asp-action="Detalhes" asp-route-id="@categoria.Id" class="btn btn-primary mt-1"><i class="fa-solid fa-eye"></i>Ver</a>
-                                    <a asp-action="Deletar" asp-route-id="@categoria.Id" class="btn btn-danger mt-1"><i class="fa-solid fa-trash"></i>Excluir</a>
+                                    <a asp-action="Editar" asp-route-id="@categoria.Id" class="btn btn-success mt-1"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                    <a asp-action="Detalhes" asp-route-id="@categoria.Id" class="btn btn-primary mt-1"><i class="fa-solid fa-eye"></i> Ver</a>
+                                    <a asp-action="Deletar" asp-route-id="@categoria.Id" class="btn btn-danger mt-1"><i class="fa-solid fa-trash"></i> Excluir</a>
 
                                 </div>
                             </td>
                            
-                            <td class="align-middle">@categoria.Nome</td>
+                            <td class="align-middle text-light">@categoria.Nome</td>
                 
                         </tr>
                     }

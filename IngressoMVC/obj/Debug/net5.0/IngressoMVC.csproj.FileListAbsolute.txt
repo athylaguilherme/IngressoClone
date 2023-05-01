@@ -451,3 +451,15 @@ C:\Users\athyla.gjpires\Documents\Project\IngressoMVC\IngressoMVC\obj\Debug\net5
 C:\Users\athyla.gjpires\Documents\Project\IngressoMVC\IngressoMVC\obj\Debug\net5.0\Razor\Views\Produtores\Editar.cshtml.g.cs
 C:\Users\athyla.gjpires\Documents\Project\IngressoMVC\IngressoMVC\obj\Debug\net5.0\Razor\Views\Filmes\Editar.cshtml.g.cs
 C:\Users\athyla.gjpires\Documents\Project\IngressoMVC\IngressoMVC\obj\Debug\net5.0\Razor\Views\Produtores\Detalhes.cshtml.g.cs
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.csproj.AssemblyReference.cache
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.AssemblyInfoInputs.cache
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.AssemblyInfo.cs
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.csproj.CoreCompileInputs.cache
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.MvcApplicationPartsAssemblyInfo.cs
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.MvcApplicationPartsAssemblyInfo.cache
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.RazorAssemblyInfo.cache
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.RazorAssemblyInfo.cs
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.dll
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\ref\IngressoMVC.dll
+D:\Projeto C#\IngressoClone\IngressoClone-main\IngressoMVC\obj\Debug\net5.0\IngressoMVC.pdb
